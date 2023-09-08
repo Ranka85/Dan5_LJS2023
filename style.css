@@ -1,0 +1,61 @@
+#h1{
+    color: white;
+}
+#headerDiv{
+    width: 100%;
+    background-color: red;
+    text-align: center;
+    padding: 20px;
+}
+#search{
+    width: 25%;
+    padding: 5px;
+    margin: 10px;
+}
+.listItem{
+    width: 35%;
+    height: 30px;
+    background-color: peachpuff;
+    padding: 10px;
+    margin: 5px;
+    color: white;
+}
+.xButton{
+    float: right;
+    background-color: red;
+    color: white;
+}
+#inputText{
+    padding: 5px;
+    margin: 10px;
+}
+#submitButton{
+    padding: 5px;
+    margin: 10px;
+}
+#searchButton{
+    padding: 5px;
+    margin: 10px;
+}
+#body{
+    background-color: thistle;
+}
+#list-to-append{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.sugestionElement{
+    background-color: aqua;
+    width: 500PX;
+    margin: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sugestionElement{
+    cursor: pointer;
+}
