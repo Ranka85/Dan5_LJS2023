@@ -83,18 +83,19 @@ function submitButtonClick(event) {
 function saveListItems() {
     const items = [];
     for (const element of list.children) {
-        items.push(element.innerText);
+        items.push(element.innerText.split("\n")[0]);
+        // console.log(element.innerText.split("\n")[0]);
     }
 
-  
+
     localStorage.setItem("listItems", JSON.stringify(items));
 }
 
 window.onload = function() {
-    const savedItems = localStorage.getItem("listItems");
+    const savedItems = localStorage.getItem("listItems"); // '["Item 1\nX","Item 2\nX","Item 3\nX","Item 4\nX","mare\nX"]'
     
     if (savedItems) {
-        const items = JSON.parse(savedItems);
+        const items = JSON.parse(savedItems); // ["Item 1\nX","Item 2\nX","Item 3\nX","Item 4\nX","mare\nX"]
 
         list.innerHTML = items.map(item => '<li class="listItem">' + item + '<button class="xButton">X</button>' + '</li>').join('');
 

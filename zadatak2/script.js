@@ -1,24 +1,83 @@
-/*<!-- Kreirati mini aplikaciju kojom pri učitavanju stranice korisnik 
-    unosi broj karaktera (default, koji je varijabilan) koje želi da unese
-    . Aplikacija generiše onoliko kvadratića koliko je korisnik defisao pri odabiru broja karaktera.
-     Nakon toga korisnik ima mogućnost da u svaki kvadratić unese karakter (klikne na kvadratić), 
-     doda novi prazni kvadratić (klikne npr. na + button), obriše postojeći (klikne npr. na X button iznad kvadratića),
-      ili izmijeni vrijednost u postojećem kvadratiću. Pri unosi/izmjeni karaktera treba odraditi validaciju, 
-      tj. provjeriti da li je korisnik unio alfabetski karakter (A-Z, a-zadatak2 i space) jer su jedino to dozvoljeni karakteru i razmak (space).
-      Ako unijeti karakter nije iz dozvoljenog skupa, od korisnika tražiti da ponovo unese karakter.
-       Pri svakoj akciji korisnika program treba da provjeri da li je t
-       renutni niz karaktera (String) palindrom i da javi poruku korisniku 
-       (ne preporučujem alert da ne bi korisnik bio obavezan svaki put da pritisne OK ili Cancel već poruku možete ispisivati ispod kvadratića)
-        “Unijeta riječ je/nije palindrom”.
- -->*/
-
- /*Kreirati mini aplikaciju kojom pri učitavanju stranice korisnik 
- unosi broj karaktera (default, koji je varijabilan) koje želi da unese*/
-
-//console log number from Input-Number" after click on submit;
+let inputNumberButton = document.getElementById("input-number-button")
 let inputNumber = document.getElementById("input-number")
+let NumberOfSquares;
+let squares = document.querySelector(".create-squares")
+let ButtonToAdd = document.querySelector("#add-new-square")
+let DeleteSqaure = document.querySelector(".delete-square")
+let nextSquareId;
+let divForInput = document.querySelector(".input-div")
 
 function inputNumberButtonClick(event) {
-    console.log(inputNumber.value)
+    NumberOfSquares=  inputNumber.value
+    nextSquareId = NumberOfSquares-1;
+    for(let i = 0 ; i < NumberOfSquares; i++){ 
+        ButtonToAdd.style.display = "inline"
+        squares.innerHTML  += `<div class="square" id="square-${i}"><button class="delete-square" onclick="deleteSquare(${i})" id="close-sqare-${i}">x</button>
+        <input type="text" maxlength="1"  id="make-square-${i}" class="make-square-group" onkeyup="CheckValidity(${i})" />  </div> `
+    }
+ }
+
+inputNumberButton.addEventListener("click", inputNumberButtonClick)
+
+inputNumberButton.addEventListener("click", function(){
+    divForInput.style.display="none"
+})
+
+
+function addNewSquare(){
+    nextSquareId++;
+    let nextSquare = document.querySelectorAll('.square').length
+    squares.innerHTML  += `<div class="square" id="square-${nextSquareId}"><button class="delete-square" onclick="deleteSquare(${nextSquareId})" id="close-sqare-${nextSquareId}">x</button>
+    <input type="text" maxlength="1"  id="make-square-${nextSquareId}" class="make-square-group" onckeyup="CheckValidity(${nextSquareId})" />  </div> `
 }
-inputNumber.addEventListener("click", inputNumberButtonClick)
+
+function deleteSquare(id){
+    let square = document.getElementById(`square-${id}`)
+    square.remove()
+}
+
+
+function CheckValidity(id){
+    let square = document.querySelector(`#make-square-${id}`)
+    let squareValue = square.value
+    let regex = /^[a-zA-Z\s]*$/;
+    if(regex.test(squareValue) == false){
+        alert("Unesite samo slova ili space")
+        square.value = ""
+    }
+    else{
+        checkPalindrom()
+    }
+
+}
+
+function checkPalindrom(){
+    let palindromText = document.querySelector(".CheckPalindrom");
+    let stringSquare = ""
+console.log(document.querySelectorAll('.square').length)
+
+    for(let i = 0; i <= nextSquareId; i++){
+        palindromText.innerHTML=""
+        let square = document.querySelector(`#make-square-${i}`)
+        //console.log(square.value)
+        // if (square.value==""){
+        //     stringSquare += " "
+        // }
+        console.log("vrijednost", square.value)
+        stringSquare += square.value
+    }
+
+    let reverseString = stringSquare.split("").reverse().join("")
+    console.log(reverseString)
+    console.log("str", stringSquare)
+    if(stringSquare == reverseString){
+        palindromText.innerHTML += `<p class="palindrom-yes">Unijeta rijec je palindrom</p>` 
+    }else{
+        palindromText.innerHTML += `<p class="palindrom-no">Unijeta rijec nije palindrom</p>` 
+
+    }
+
+}
+
+
+
