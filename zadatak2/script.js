@@ -34,7 +34,11 @@ function addNewSquare(){
 function deleteSquare(id){
     let square = document.getElementById(`square-${id}`)
     square.remove()
+    checkPalindrom()
+
 }
+
+
 
 
 function CheckValidity(id){
