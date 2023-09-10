@@ -12,7 +12,7 @@ function inputNumberButtonClick(event) {
     nextSquareId = NumberOfSquares-1;
     for(let i = 0 ; i < NumberOfSquares; i++){ 
         ButtonToAdd.style.display = "inline"
-        squares.innerHTML  += `<div class="square" id="square-${i}"><button class="delete-square" onclick="deleteSquare(${i})" id="close-sqare-${i}">x</button>
+        squares.innerHTML  += `<div class="square" id="square-${i}"><button class="delete-square" tabindex="-1" onclick="deleteSquare(${i})" id="close-sqare-${i}">x</button>
         <input type="text" maxlength="1"  id="make-square-${i}" class="make-square-group" onkeyup="CheckValidity(${i})" />  </div> `
     }
  }
@@ -27,8 +27,8 @@ inputNumberButton.addEventListener("click", function(){
 function addNewSquare(){
     nextSquareId++;
     let nextSquare = document.querySelectorAll('.square').length
-    squares.innerHTML  += `<div class="square" id="square-${nextSquareId}"><button class="delete-square" onclick="deleteSquare(${nextSquareId})" id="close-sqare-${nextSquareId}">x</button>
-    <input type="text" maxlength="1"  id="make-square-${nextSquareId}" class="make-square-group" onckeyup="CheckValidity(${nextSquareId})" />  </div> `
+    squares.innerHTML  += `<div class="square" id="square-${nextSquareId}"><button class="delete-square" tabindex="-1" onclick="deleteSquare(${nextSquareId})" id="close-sqare-${nextSquareId}">x</button>
+    <input type="text" maxlength="1"  id="make-square-${nextSquareId}" class="make-square-group" onkeyup="CheckValidity(${nextSquareId})" />  </div> `
 }
 
 function deleteSquare(id){
@@ -38,6 +38,7 @@ function deleteSquare(id){
 
 
 function CheckValidity(id){
+    console.log(id)
     let square = document.querySelector(`#make-square-${id}`)
     let squareValue = square.value
     let regex = /^[a-zA-Z\s]*$/;
