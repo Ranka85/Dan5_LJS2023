@@ -10,6 +10,7 @@ let list = document.getElementById("list");
 let inputText = document.getElementById("inputText");
 let submitButton = document.getElementById("submitButton");
 let searchButton = document.getElementById("searchButton");
+let suggestionList = document.getElementById("suggestionList");
 function submitButtonClick(event){
     event.preventDefault()
     list.innerHTML += '<li class="listItem">' + inputText.value + '<button class="xButton">X</button>' + '</li>';
@@ -19,31 +20,58 @@ function submitButtonClick(event){
 }
 searchText = document.getElementById("search");
 submitButton.addEventListener("click", submitButtonClick);
-let searchSuggestion = document.getElementById("list-to-append")
-function moveSuggestion(event){
-    currentSuggestion = list.children[0]
-    if  (event.key === "ArrowUp") {
-        console.log("Up arrow key pressed")
+let searchSuggestion = document.getElementById("suggestionList")
+
+
+var suggestionIteration = 0 //pozicija selektovanog searchSuggestion
+
+function moveSuggestion(event){ //racuna i vraca novu poziciju selekcije searchSuggestion
+    let maxNum = suggestionList.childNodes
+    if  (event.key === "ArrowUp") { //da ne bi suggestionIteration presao ispod nule
+        if (suggestionIteration > 0)  {
+            suggestionIteration --
+        }
+        else if (suggestionIteration == 0){
+            suggestionIteration = maxNum.length-1
+        }
     }
     else if  (event.key === "ArrowDown") {
-        console.log("Up arrow key pressed")
+        if(suggestionIteration < maxNum.length-1){ //da ne bi suggestionIteration presao iznad duzine liste
+            suggestionIteration ++
+        }
+        else if(suggestionIteration == maxNum.length-1){
+            suggestionIteration = 0
+        }
     }
 }
-//searchSuggestion.innerHTML += `<li id=${"sugestionElementID" + i} class="sugestionElement">${element.innerText.slice(0,-1)}</li>`;
-document.addEventListener("keydown", moveSuggestion)
+
+function pressedEnter(event){
+    if(event.key === "Enter"){
+        searchText.value = event.target.innerText;
+        //console.log("Enter!")
+    }
+}
+
 function searchButtonClick(event){
+    //console.log("123  ", list.children)
     searchSuggestion.innerHTML =""
-    i = 0
     for (element of list.children){
         if (element.innerText.includes(searchText.value)){
             if(!searchText.value == ""){
-            searchSuggestion.innerHTML += `<li id=${"sugestionElementID" + i} class="sugestionElement">${element.innerText.slice(0,-1)}</li>`;
-           // console.log(searchText.value)
-           i++
-        }
+                searchSuggestion.innerHTML += '<li class="sugestionElement">'+element.innerText.slice(0,-1)+'</li>';
+            }
         }
     }
+    //console.log("123  ", searchSuggestion.children)
+    for (suggestion of searchSuggestion.children){ //prolazi kroz generisane suggestions i daje im event listener za enter
+        suggestion.addEventListener("keydown", pressedEnter)
+        console.log("123  ", suggestion)
+    }
+    document.addEventListener("keydown", moveSuggestion)
+    currentSuggestion = suggestionList.children[suggestionIteration]
+    currentSuggestion.style.backgroundColor = "green"
 }
+
 searchButton.addEventListener("click", searchButtonClick);
 function searchSuggestionClick(event) {
     searchText.value = event.target.innerText;
@@ -53,7 +81,7 @@ function searchSuggestionClick(event) {
 }
 searchSuggestion.addEventListener("click", searchSuggestionClick);
 function JusteSelectOne() {
-   // console.log("pretraga kje " ,searchText.value);
+    // console.log("pretraga kje " ,searchText.value);
     let listToRemove = document.getElementById("list")
     for ( element of listToRemove.children) {
         //console.log(element.innerText)
@@ -64,8 +92,6 @@ function JusteSelectOne() {
         }
     }
 }
-
-
 //cookies
 function submitButtonClick(event) {
     event.preventDefault();

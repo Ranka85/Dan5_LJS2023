@@ -8,41 +8,38 @@
     <title>TODO</title>
 </head>
 <body id="body">
-    <header>
-        <div id="headerDiv">
+<header>
+    <div id="headerDiv">
+        <div>
             <div>
-                <div>
-                    <h1 id="h1">TODO List</h1>
+                <h1 id="h1">TODO List</h1>
+            </div>
+            <div>
+                <div id="myDropdown" class="dropdown-content">
+                    <input type="text" placeholder="Search Items..." id="search" onkeyup="searchButtonClick()"> <button id="searchButton">Search</button>
+                    <ul id="suggestionList">
+                    </ul>
                 </div>
-                <div>
-                        <div id="myDropdown" class="dropdown-content">
-                            <input type="text" placeholder="Search Items..." id="search" onkeyup="searchButtonClick()"> <button id="searchButton">Search</button>
-                            <ul id="list-to-append">
-
-
-                            </ul>
-                        </div>
-              
-                </div>                  
             </div>
         </div>
-    </header>
-    <div>
-        <div>
-            <h2>Add Items</h2>
-            <form>
-                <input type="text" id="inputText"  placeholder="Add item...">
-                <input type="submit" value="Submit" id="submitButton">
-            </form>
-            <h2>Items</h2>
-            <ul id="list" >
-                <li class="listItem">Item 1 <button class="xButton">X</button></li>
-                <li class="listItem">Item 2 <button class="xButton">X</button></li>
-                <li class="listItem">Item 3 <button class="xButton">X</button></li>
-                <li class="listItem">Item 4 <button class="xButton">X</button></li>
-            </ul>
-        </div>
     </div>
+</header>
+<div>
+    <div>
+        <h2>Add Items</h2>
+        <form>
+            <input type="text" id="inputText"  placeholder="Add item...">
+            <input type="submit" value="Submit" id="submitButton">
+        </form>
+        <h2>Items</h2>
+        <ul id="list" >
+            <li class="listItem">Item 1 <button class="xButton">X</button></li>
+            <li class="listItem">Item 2 <button class="xButton">X</button></li>
+            <li class="listItem">Item 3 <button class="xButton">X</button></li>
+            <li class="listItem">Item 4 <button class="xButton">X</button></li>
+        </ul>
+    </div>
+</div>
 </body>
 </html>
 <script src='script.js'></script>
