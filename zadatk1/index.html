@@ -8,7 +8,8 @@
     <title>TODO</title>
 </head>
 <body id="body">
-<header>
+<div class="container">
+    <header>
     <div id="headerDiv">
         <div>
             <div>
@@ -23,15 +24,17 @@
             </div>
         </div>
     </div>
-</header>
-<div>
-    <div>
-        <h2>Add Items</h2>
-        <form>
+ </header>
+    <div class="add-item-form">
+        <h2 id="add-items-h2">Add Items</h2>
+        <form >
+           
             <input type="text" id="inputText"  placeholder="Add item...">
             <input type="submit" value="Submit" id="submitButton">
         </form>
-        <h2>Items</h2>
+    </div>
+    <div class="Item-table">
+        <h2 id="items-text">Items</h2>
         <ul id="list" >
             <li class="listItem">Item 1 <button class="xButton">X</button></li>
             <li class="listItem">Item 2 <button class="xButton">X</button></li>

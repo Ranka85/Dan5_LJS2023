@@ -1,42 +1,127 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    height: 100vh;
+    width: 100%;
+    background-image: url(5kzat.png);
+    background-position: center;
+    background-size: cover;
+
+    box-sizing: border-box;
+    position: relative;
+}
+#add-items-h2{
+    color: black;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.add-item-form{
+    text-align: center;
+    border-radius: 10px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    margin: 2% 30% 0% 30%;
+
+
+}
+
 #h1{
     color: white;
 }
 #headerDiv{
     width: 100%;
-    background-color: red;
+    background:linear-gradient(45deg, rgb(131, 196, 222), rgb(232, 182, 190));
     text-align: center;
-    padding: 20px;
 }
+
+.Item-table{
+margin-left: 90px;
+margin-top: 20px;
+
+}
+
+#items-text{
+    color: black;
+    margin-top: 20px;
+    margin-left: 150px;
+}
+
+.listItem{
+    width: 35%;
+    height: 30px;
+    background-color: rgb(75, 171, 198);
+    padding: 5px;
+    margin: 5px;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+  
+    
+}
+
 #search{
     width: 25%;
     padding: 5px;
     margin: 10px;
+    border-radius: 10px;
+    border: 1px solid #da8282;
 }
-.listItem{
-    width: 35%;
-    height: 30px;
-    background-color: peachpuff;
-    padding: 10px;
-    margin: 5px;
-    color: white;
-}
+
 .xButton{
     float: right;
-    background-color: red;
-    color: white;
+    margin-right: 10px;
+    border-radius: 2px;
+    border: 1px solid #070606;
+    width: 20px;
 }
+.xButton:hover{
+    background-color: #070606;
+    color: white;
+    cursor: pointer;
+}
+
 #inputText{
     padding: 5px;
     margin: 10px;
+    border-radius: 10px;
+    border: 1px solid #da8282;
+    
 }
 #submitButton{
     padding: 5px;
     margin: 10px;
+    border-radius: 10px;
+    border: 1px solid #da8282;
+    background-color: #ededed;
+    color: rgb(14, 12, 12);
+    cursor: pointer;
+
+}
+#submitButton:hover{
+    background-color: rgb(225, 115, 115);
+    color: white;
 }
 #searchButton{
     padding: 5px;
     margin: 10px;
+    border-radius: 10px;
+    border: 1px solid #da8282;
+    background-color: #ededed;
+    color: rgb(14, 12, 12);
+    cursor: pointer;
+
 }
+#searchButton:hover{
+    background-color: rgb(225, 115, 115);
+    color: white;
+}
+
 #body{
     background-color: thistle;
 }
@@ -47,12 +132,17 @@
     align-items: center;
 }
 .sugestionElement{
-    background-color: aqua;
-    width: 500PX;
+    background-color: rgb(223, 234, 236);
+    width: 400PX;
     margin: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    border-radius: 10px;
+    padding: 1px;
+    text-align: center;
+    cursor: pointer;
+    margin-left: 30%;
+    border-color: #000000;
+    border-style: solid;
+
 }
 .sugestionElement{
     cursor: pointer;
